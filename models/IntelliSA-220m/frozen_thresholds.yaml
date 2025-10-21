@@ -1,0 +1,4 @@
+chef: 0.61
+ansible: 0.61
+puppet: 0.61
+combined: 0.61

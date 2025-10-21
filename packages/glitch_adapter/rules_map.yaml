@@ -1,0 +1,55 @@
+# Mapping between GLITCH upstream codes and iacsec schema metadata.
+sec_def_admin:
+  message: Admin privileges enabled by default
+  postfilter: false
+  rule_id: ADMIN_DEFAULT
+  severity: medium
+  smell: admin-by-default
+sec_empty_pass:
+  message: Empty password detected
+  postfilter: false
+  rule_id: EMPTY_PASSWORD
+  severity: high
+  smell: empty-password
+sec_hard_secr:
+  message: Hard-coded secret detected
+  postfilter: true
+  rule_id: HARDCODED_SECRET
+  severity: high
+  smell: hardcoded-secret
+sec_https:
+  message: HTTP used without TLS
+  postfilter: true
+  rule_id: HTTP_NO_TLS
+  severity: medium
+  smell: http
+sec_invalid_bind:
+  message: Binding to 0.0.0.0 exposes service
+  postfilter: false
+  rule_id: INVALID_BIND
+  severity: medium
+  smell: invalid-bind
+sec_no_default_switch:
+  message: Switch/case statement missing default branch
+  postfilter: false
+  rule_id: MISSING_DEFAULT_SWITCH
+  severity: medium
+  smell: missing-default-switch
+sec_no_int_check:
+  message: Downloaded artifact lacks integrity check
+  postfilter: false
+  rule_id: NO_INTEGRITY_CHECK
+  severity: medium
+  smell: no-integrity-check
+sec_susp_comm:
+  message: Suspicious comment matching risky keyword
+  postfilter: true
+  rule_id: SUSPICIOUS_COMMENT
+  severity: low
+  smell: suspicious-comment
+sec_weak_crypt:
+  message: Weak cryptography algorithm in use
+  postfilter: true
+  rule_id: WEAK_CRYPTO
+  severity: high
+  smell: weak-crypto

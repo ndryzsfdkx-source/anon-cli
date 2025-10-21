@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "intellisa"
+version = "0.1.0"
+description = "IntelliSA: IaC security scanner with rule-based detection and neural inference"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+
+dependencies = [
+  "typer>=0.12",
+  "pydantic>=2.7",
+  "rich>=13.7",
+  "safetensors>=0.4",
+  "ply>=3.11",
+  "torch>=2.2",
+  "pyyaml>=6.0",
+  "ruamel.yaml>=0.17",
+  "puppetparser>=0.2",
+  "transformers>=4.45",
+]
+
+[project.optional-dependencies]
+onnx = [
+  "onnxruntime>=1.18",
+]
+
+[project.scripts]
+intellisa = "apps.cli.main:app"
+
+[tool.setuptools.packages.find]
+include = ["apps*", "packages*", "intellisa*"]
+exclude = ["packages.glitch_core.tests*", "packages.glitch_core.docs*"]
+
+[tool.pytest.ini_options]
+addopts = "-q"

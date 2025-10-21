@@ -1,0 +1,21 @@
+{
+  "selection_policy": "median_combined_f1_then_l2_to_mean_vector_then_spread",
+  "run_name": "codet5p_220m_champion_lr4e-5_bs8_ep6_wd0.01_acc1_seed42_20250925_191300_job16122826",
+  "seed": 42,
+  "f1": {
+    "combined": 0.7786259541984732,
+    "chef": 0.6976744186046512,
+    "ansible": 0.8837209302325582,
+    "puppet": 0.7555555555555555
+  },
+  "checkpoint_files": [
+    "config.json",
+    "model.safetensors",
+    "tokenizer.json",
+    "special_tokens_map.json",
+    "tokenizer_config.json",
+    "vocab.json",
+    "merges.txt",
+    "training_args.bin"
+  ]
+}

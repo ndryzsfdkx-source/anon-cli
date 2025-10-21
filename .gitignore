@@ -1,0 +1,65 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+*~
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# ==============================================================================
+# iacsec Specific
+# ==============================================================================
+
+# Detailed documentation (keep local only)
+docs/
+!docs/USER_HANDBOOK.md
+
+# Model weights (large binaries)
+models/*/model.safetensors
+
+# Scan output artifacts
+artifacts/
+*.sarif
+*.jsonl
+
+# Keep test golden files
+!tests/e2e/golden/*.sarif
+!tests/e2e/golden/*.jsonl
+
+# Conda cache (if using conda)
+.conda_envs/
+.conda_pkgs/
+
+# Example Test Data
+examples/sample_repo/
+examples/test_repo/

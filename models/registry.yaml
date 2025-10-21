@@ -1,0 +1,21 @@
+models:
+- name: IntelliSA-220m
+  version: 1.0.0
+  uri: https://huggingface.co/colemei/IntelliSA-220m/resolve/main/model.safetensors
+  sha256: 4061d8ab7be774e4253e3bab5af7ca0da49ac819b00498cd5949ece2223cee0f
+  framework: torch
+  default_threshold: 0.61
+  thresholds: IntelliSA-220m/frozen_thresholds.yaml
+  tokenizer: IntelliSA-220m
+  labels:
+  - TP
+  - FP
+- name: stub
+  version: 0.0.0
+  uri: file:stub/stub.safetensors
+  sha256: 6c5f7d7a5471d86419b080a0dcee59887cb6f73d479d5c14e87d66977ae2bd36
+  framework: torch
+  default_threshold: 0.5
+  labels:
+  - TP
+  - FP

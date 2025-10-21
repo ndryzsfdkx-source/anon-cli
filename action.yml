@@ -1,0 +1,41 @@
+name: "intellisa scan (pilot)"
+description: "IaC security scanner using rule-based detection and neural inference"
+inputs:
+  path:
+    description: "Path to scan"
+    default: "."
+  tech:
+    description: "auto | ansible | chef | puppet"
+    default: "auto"
+  postfilter:
+    description: "Model name from models/registry.yaml"
+    default: "IntelliSA-220m"
+  sarif_out:
+    description: "Output SARIF path"
+    default: "intellisa.sarif"
+  formats:
+    description: "Comma separated formats (sarif,json,table)"
+    default: "sarif,json"
+  model_cache:
+    description: "Override model cache directory"
+    default: "${{ runner.temp }}/intellisa-model-cache"
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: |
+        set -euo pipefail
+        python -m pip install --upgrade pip
+        python -m pip install -e .
+    - shell: bash
+      env:
+        FORMATS: "${{ inputs.formats }}"
+        INPUT_PATH: "${{ inputs.path }}"
+        INPUT_TECH: "${{ inputs.tech }}"
+        INPUT_POSTFILTER: "${{ inputs.postfilter }}"
+        INPUT_SARIF_OUT: "${{ inputs.sarif_out }}"
+      run: |
+        set -euo pipefail
+        export INTELLISA_MODEL_CACHE="${{ inputs.model_cache }}"
+        python -m intellisa.models.fetch "${{ inputs.postfilter }}"
+        python scripts/run_action_scan.py

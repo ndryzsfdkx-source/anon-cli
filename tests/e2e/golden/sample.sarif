@@ -1,0 +1,173 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "intellisa",
+          "version": "0.0.0",
+          "rules": [
+            {
+              "id": "EMPTY_PASSWORD",
+              "name": "EMPTY_PASSWORD",
+              "shortDescription": {
+                "text": "Empty password detected"
+              },
+              "properties": {
+                "smell": "empty-password",
+                "tech": "ansible"
+              }
+            },
+            {
+              "id": "HARDCODED_SECRET",
+              "name": "HARDCODED_SECRET",
+              "shortDescription": {
+                "text": "Hard-coded secret detected"
+              },
+              "properties": {
+                "smell": "hardcoded-secret",
+                "tech": "ansible"
+              }
+            },
+            {
+              "id": "NO_INTEGRITY_CHECK",
+              "name": "NO_INTEGRITY_CHECK",
+              "shortDescription": {
+                "text": "Downloaded artifact lacks integrity check"
+              },
+              "properties": {
+                "smell": "no-integrity-check",
+                "tech": "ansible"
+              }
+            },
+            {
+              "id": "HTTP_NO_TLS",
+              "name": "HTTP_NO_TLS",
+              "shortDescription": {
+                "text": "HTTP used without TLS"
+              },
+              "properties": {
+                "smell": "http",
+                "tech": "ansible"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "EMPTY_PASSWORD",
+          "level": "error",
+          "message": {
+            "text": "Empty password detected \u2014 glitch-accepted"
+          },
+          "properties": {
+            "prediction": "TP",
+            "score": 1.0,
+            "evidence": {
+              "glitch_code": "sec_empty_pass",
+              "detail": "password:''"
+            }
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "roles/web/tasks/credentials.yml"
+                },
+                "region": {
+                  "startLine": 5
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "HARDCODED_SECRET",
+          "level": "error",
+          "message": {
+            "text": "Hard-coded secret detected \u2014 score>=threshold"
+          },
+          "properties": {
+            "prediction": "TP",
+            "score": 0.818430772320385,
+            "evidence": {
+              "glitch_code": "sec_hard_secr",
+              "detail": "password:''"
+            }
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "roles/web/tasks/credentials.yml"
+                },
+                "region": {
+                  "startLine": 5
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "NO_INTEGRITY_CHECK",
+          "level": "warning",
+          "message": {
+            "text": "Downloaded artifact lacks integrity check \u2014 glitch-accepted"
+          },
+          "properties": {
+            "prediction": "TP",
+            "score": 1.0,
+            "evidence": {
+              "glitch_code": "sec_no_int_check",
+              "detail": "url:'http://insecure.example.com/app.tar.gz'"
+            }
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "roles/web/tasks/main.yml"
+                },
+                "region": {
+                  "startLine": 2
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "HTTP_NO_TLS",
+          "level": "warning",
+          "message": {
+            "text": "HTTP used without TLS \u2014 score<threshold"
+          },
+          "properties": {
+            "prediction": "FP",
+            "score": 0.2583172685279541,
+            "evidence": {
+              "glitch_code": "sec_https",
+              "detail": "url:'http://insecure.example.com/app.tar.gz'"
+            }
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "roles/web/tasks/main.yml"
+                },
+                "region": {
+                  "startLine": 4
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "conversion": {
+        "invocationTimeUtc": "1970-01-01T00:00:00Z"
+      }
+    }
+  ]
+}
