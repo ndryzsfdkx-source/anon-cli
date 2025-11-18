@@ -60,6 +60,6 @@ artifacts/
 .conda_envs/
 .conda_pkgs/
 
-# Example Test Data
-examples/sample_repo/
-examples/test_repo/
+# Example Test Data (kept in repo for CI/e2e tests)
+# examples/sample_repo/
+# examples/test_repo/

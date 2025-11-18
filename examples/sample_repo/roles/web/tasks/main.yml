@@ -1,0 +1,5 @@
+---
+- name: Fetch artifact over HTTP
+  get_url:
+    url: http://insecure.example.com/app.tar.gz
+    dest: /tmp/app.tar.gz
