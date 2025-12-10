@@ -1,7 +1,6 @@
 # intellisa
 
-> **Project Hub**: [IntelliSA](../00.IntelliSA)
-> **This repository**: Production-ready CLI toolkit
+> **Project Hub**: [IntelliSA](../00.IntelliSA) > **This repository**: Production-ready CLI toolkit
 > See the hub for paper materials, artifact manifest, and links to all repositories.
 
 ## Overview
@@ -77,10 +76,6 @@ Warning: falling back to deterministic stub model
 **Fix**: Install PyTorch and transformers
 
 The stub model produces deterministic but artificial scores for testing only.
-
-## Documentation
-
-- [User Handbook](docs/USER_HANDBOOK.md) - Complete operational guide
 
 ## Repository Structure
 
